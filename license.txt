@@ -11,18 +11,3 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-package gradle.tutorial;
-
-import org.apache.commons.lang3.StringUtils;
-
-public class AppMain {
-    public String getGreeting() {
-        return "Hello World!";
-    }
-
-    public static void main(String[] args) {
-        System.out.println(new AppMain().getGreeting());
-        System.out.println(StringUtils.join(new String[]{"a", "b", CustomLib.IDENTIFIER}, ":"));
-    }
-}
