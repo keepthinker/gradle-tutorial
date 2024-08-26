@@ -16,9 +16,11 @@ pluginManagement {
     }
 }
 
+
 plugins {
     // Apply the foojay-resolver plugin to allow automatic download of JDKs
     id 'org.gradle.toolchains.foojay-resolver-convention' version '0.4.0'
+//    id("io.spring.dependency-management") version "1.1.6" todo 学习如何使用 dependency-management 进行版本控制
 }
 
 
@@ -36,16 +38,24 @@ dependencyResolutionManagement {
 
 rootProject.name = 'gradle-tutorial'
 
-//
+//include('platform')
 //include('app')
 //include('lib')
 
+
 rootDir.listFiles().toList().stream().filter {
-    f -> f.isDirectory() && new File(f, "build.gradle").exists()
+    f -> f.isDirectory() && new File(f, "build.gradle").exists() && !f.getName().equals('buildSrc')
 }.forEach { f -> {
     include(f.name)
 }}
 
+
+
+include('app')
+project(':app').buildFileName = 'app.gradle'
+
 includeBuild('gradle/license-plugin')
 
 println 'This is executed during the initialization phase.'
+
+

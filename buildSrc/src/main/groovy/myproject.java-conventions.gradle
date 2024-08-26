@@ -1,0 +1,16 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.gradle.tutorial'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+//    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.15.0'
+
+}
+

@@ -11,9 +11,20 @@ plugins {
     id 'application'
     id 'maven-publish'
     id('com.tutorial.license')
+    id 'myproject.java-conventions'
+    id("java-library")
 }
 
 project.description = 'app project description'
+
+// Apply any other configurations specific to your project
+
+// Use the build script defined in buildSrc
+apply from: rootProject.file('/buildSrc/shared.gradle')
+
+
+// Use the custom task defined in buildSrc
+tasks.register('myCustomTask', MyCustomTask)
 
 //repositories {
     // Use Maven Central for resolving dependencies.
@@ -25,10 +36,13 @@ project.description = 'app project description'
 
 dependencies {
     // This dependency is used by the application.
-    implementation 'com.google.guava:guava:32.1.1-jre'
-    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.15.0'
+//    implementation 'com.google.guava:guava:32.1.1-jre'
+    implementation(platform(project(':platform')))
+    implementation group: 'org.apache.commons', name: 'commons-lang3'
 
     implementation(project(':lib'))
+
+
 }
 
 testing {
